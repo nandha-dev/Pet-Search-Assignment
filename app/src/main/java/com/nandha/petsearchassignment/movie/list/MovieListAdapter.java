@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.nandha.petsearchassignment.AppConstants;
 import com.nandha.petsearchassignment.R;
+import com.nandha.petsearchassignment.helpers.StringHelper;
 import com.nandha.petsearchassignment.model.Movie;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     movieListViewHolder.titleTextView.setText(movie.getTitle());
     movieListViewHolder.overviewTextView.setText(movie.getOverview());
     movieListViewHolder.ratingTextView.setText(String.valueOf(movie.getRating()));
-    //movieListViewHolder.releaseDateTextView.setText(movie.getRelease_date());
+    movieListViewHolder.releaseDateTextView.setText(
+        StringHelper.dateToReleaseDate(movie.getRelease_date()));
     movieListViewHolder.languageTextView.setText(movie.getLanguage());
 
     Glide.with(movieListViewHolder.rootView.getContext())

@@ -18,7 +18,7 @@
   <TextView
       tools:text="@string/place_holder_details"
       android:textColor="@android:color/black"
-      android:textSize="@dimen/text_size_medium"
+      android:textSize="@dimen/text_size_xmedium"
       android:padding="@dimen/spacing_micro"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -32,8 +32,8 @@
       android:id="@+id/duration_textView"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:textSize="@dimen/text_size_xmedium"
       tools:text="@string/place_holder_runtime"
-      android:textSize="@dimen/text_size_medium"
       android:padding="@dimen/spacing_micro"
       android:layout_marginTop="@dimen/spacing_medium"
       android:textColor="@android:color/black"
@@ -44,9 +44,9 @@
 
   <TextView
       tools:text="@string/place_holder_release_date"
-      android:textSize="@dimen/text_size_medium"
       android:layout_width="wrap_content"
       android:layout_marginTop="@dimen/spacing_medium"
+      android:textSize="@dimen/text_size_xmedium"
       android:padding="@dimen/spacing_micro"
       android:layout_height="wrap_content"
       android:id="@+id/releaseDate_textView"
@@ -70,6 +70,7 @@
       android:layout_marginStart="@dimen/spacing_medium"
       android:layout_marginEnd="@dimen/spacing_medium"
       android:layout_marginRight="@dimen/spacing_medium"
+      android:textSize="@dimen/text_size_xmedium"
       android:padding="@dimen/spacing_micro"
       app:layout_constraintStart_toEndOf="@+id/releaseDate_textView"
       app:layout_constraintHorizontal_bias="1.0"
@@ -82,10 +83,10 @@
       android:layout_height="wrap_content"
       android:textColor="@android:color/black"
       android:id="@+id/genre_textView"
-      android:textSize="@dimen/text_size_medium"
       android:layout_marginLeft="@dimen/spacing_medium"
       android:layout_marginStart="@dimen/spacing_medium"
       android:padding="@dimen/spacing_micro"
+      android:textSize="@dimen/text_size_xmedium"
       android:layout_marginTop="@dimen/spacing_medium"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/duration_textView"/>
@@ -100,6 +101,7 @@
       android:paddingStart="@dimen/spacing_small"
       android:paddingEnd="@dimen/spacing_small"
       android:textAllCaps="true"
+      android:textSize="@dimen/text_size_xmedium"
       android:padding="@dimen/spacing_micro"
       android:layout_marginTop="@dimen/spacing_medium"
       app:layout_constraintTop_toBottomOf="@+id/rating_textView"
@@ -127,9 +129,9 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           app:layout_constraintStart_toStartOf="parent"
+          android:textSize="@dimen/text_size_xmedium"
           android:id="@+id/textView_budget"
           android:textColor="@android:color/black"
-          android:textSize="@dimen/text_size_medium"
           app:layout_constraintTop_toTopOf="parent"/>
 
       <TextView
@@ -138,7 +140,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:id="@+id/budget_textView"
-          android:textSize="@dimen/text_size_medium"
+          android:textSize="@dimen/text_size_xmedium"
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintStart_toEndOf="@+id/textView_revenue"
           android:layout_marginStart="8dp"
@@ -154,6 +156,7 @@
           android:layout_marginEnd="@dimen/spacing_small"
           android:layout_marginRight="@dimen/spacing_small"
           android:layout_marginBottom="@dimen/spacing_medium"
+          android:textSize="@dimen/text_size_xmedium"
           app:layout_constraintTop_toBottomOf="@+id/textView_budget"
           android:textColor="@android:color/black"
           app:layout_constraintStart_toStartOf="parent"/>
@@ -167,6 +170,7 @@
           android:layout_marginTop="@dimen/spacing_small"
           android:layout_marginLeft="@dimen/spacing_small"
           android:layout_marginStart="@dimen/spacing_small"
+          android:textSize="@dimen/text_size_xmedium"
           android:layout_marginEnd="@dimen/spacing_medium"
           android:layout_marginRight="@dimen/spacing_medium"
           android:layout_marginBottom="@dimen/spacing_medium"
