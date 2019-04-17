@@ -1,7 +1,9 @@
 package com.nandha.petsearchassignment.movie.list;
 
 import android.os.Bundle;
+import android.view.Menu;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -18,6 +20,7 @@ import javax.inject.Inject;
 public class MovieListActivity extends MvpActivity<MovieListView, MovieListPresenter>
     implements MovieListView {
 
+  @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.movieList_recyclerView) RecyclerView movieListRecyclerView;
   @Inject MovieListAdapter movieListAdapter;
   @Inject AssignmentApi assignmentApi;
@@ -31,12 +34,30 @@ public class MovieListActivity extends MvpActivity<MovieListView, MovieListPrese
     ButterKnife.bind(this);
     getActivityComponent().injectActivity(this);
 
+    setUpToolBar();
+    initializeRecyclerView();
+
+    getPresenter().getMovieList(assignmentApi);
+  }
+
+  private void setUpToolBar() {
+    if (toolbar != null) {
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setTitle(R.string.title);
+    }
+  }
+
+  private void initializeRecyclerView() {
     movieListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     movieListAdapter.setListener(movie ->
-        startActivity(MovieDetailsActivity.getActivityIntent(this, movie.getId()))
+        startActivity(MovieDetailsActivity.getActivityIntent(this, movie.getId(), movie.getTitle()))
     );
     movieListRecyclerView.setAdapter(movieListAdapter);
-    getPresenter().getMovieList(assignmentApi);
+  }
+
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.movie_list_menu, menu);
+    return true;
   }
 
   @NonNull @Override public MovieListPresenter createPresenter() {

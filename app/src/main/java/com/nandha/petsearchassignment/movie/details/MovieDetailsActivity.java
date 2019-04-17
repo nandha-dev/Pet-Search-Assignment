@@ -3,9 +3,11 @@ package com.nandha.petsearchassignment.movie.details;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -22,6 +24,7 @@ import javax.inject.Inject;
 public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDetailsPresenter>
     implements MovieDetailsView {
 
+  @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.backdrop_imageView) ImageView backDropImageView;
   @BindView(R.id.overview_textView) TextView overViewTextView;
   @BindView(R.id.duration_textView) TextView durationTextView;
@@ -34,12 +37,14 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
 
   @Inject AssignmentApi assignmentApi;
 
-  private int MOVIE_ID;
+  private int movieId;
+  private String movieTitle;
   private MovieDetailsComponent movieDetailsComponent;
 
-  public static Intent getActivityIntent(Context context, int movieId) {
+  public static Intent getActivityIntent(Context context, int movieId, String title) {
     Intent intent = new Intent(context, MovieDetailsActivity.class);
     intent.putExtra(AppConstants.BUNDLE_KEY_MOVIE_ID, movieId);
+    intent.putExtra(AppConstants.BUNDLE_KEY_MOVIE_NAME, title);
     return intent;
   }
 
@@ -50,21 +55,38 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
     ButterKnife.bind(this);
 
     getIntentData();
-
+    setHomeAsUp();
     getActivityComponent().injectActivity(this);
 
-    if (MOVIE_ID == 0) {
+    if (movieId == 0) {
       finish();
     }
-    getPresenter().getMovieDetails(assignmentApi, MOVIE_ID);
+    getPresenter().getMovieDetails(assignmentApi, movieId);
+  }
+
+  private void setHomeAsUp() {
+    if (toolbar != null) {
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setTitle(movieTitle);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
   }
 
   private void getIntentData() {
-    MOVIE_ID = getIntent().getIntExtra(AppConstants.BUNDLE_KEY_MOVIE_ID, 0);
+    movieId = getIntent().getIntExtra(AppConstants.BUNDLE_KEY_MOVIE_ID, 0);
+    movieTitle = getIntent().getStringExtra(AppConstants.BUNDLE_KEY_MOVIE_NAME);
   }
 
   @NonNull @Override public MovieDetailsPresenter createPresenter() {
     return new MovieDetailsPresenter();
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == android.R.id.home) {
+      onBackPressed();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   public MovieDetailsComponent getActivityComponent() {

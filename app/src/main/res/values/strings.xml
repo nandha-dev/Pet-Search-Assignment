@@ -2,6 +2,9 @@
   <string name="app_name">Pet Search Assignment</string>
   <string name="budget">Budget</string>
   <string name="revenue">Revenue</string>
+  <string name="title">Popular Movies</string>
+  <string name="search">Search</string>
+  <string name="sort">Sort</string>
 
 
   <!--Place Holders-->
