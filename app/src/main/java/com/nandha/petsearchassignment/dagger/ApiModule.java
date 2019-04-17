@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
     return AppConstants.BASE_URL;
   }
 
-  @Provides @Singleton public AssignmentApi getDocbuddyApi(Gson gson) {
+  @Provides @Singleton public AssignmentApi getAssignmentApi(Gson gson) {
     return new AssignmentApi(getBaseUrl(), getOkHttpClient(), gson);
   }
 }
