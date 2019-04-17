@@ -12,7 +12,7 @@ public class Assignment extends Application {
   @Override public void onCreate() {
     super.onCreate();
     initializeInjector();
-    }
+  }
 
   private void initializeInjector() {
     applicationComponent =

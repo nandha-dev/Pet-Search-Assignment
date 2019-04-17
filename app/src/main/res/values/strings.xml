@@ -1,3 +1,9 @@
 <resources>
-  <string name="app_name">Petsearch Assignment</string>
+  <string name="app_name">Pet Search Assignment</string>
+  <string name="place_holder_title">Lorem ipsum dolor</string>
+  <string name="place_holder_details">Lorem ipsum dolor sit amet, consectetur adipiscing elitlorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+  <string name="place_holder_rating">9.3</string>
+  <string name="place_holder_release_date">21st April 2018</string>
+  <string name="place_holder_language">EN</string>
+
 </resources>
