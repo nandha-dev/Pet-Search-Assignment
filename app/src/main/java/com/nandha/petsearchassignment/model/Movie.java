@@ -2,6 +2,7 @@ package com.nandha.petsearchassignment.model;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
+import java.util.List;
 
 public class Movie {
   @SerializedName("id") private int id;
@@ -11,6 +12,11 @@ public class Movie {
   @SerializedName("poster_path") private String posterPath;
   @SerializedName("original_language") private String language;
   @SerializedName("release_date") private Date release_date;
+  @SerializedName("backdrop_path") private String backdrop_path;
+  @SerializedName("budget") private int budget;
+  @SerializedName("revenue") private int revenue;
+  @SerializedName("runtime") private int runtime;
+  @SerializedName("genres") List<Genre> genres;
 
   public int getId() {
     return id;
@@ -38,5 +44,25 @@ public class Movie {
 
   public Date getRelease_date() {
     return release_date;
+  }
+
+  public String getBackdrop_path() {
+    return backdrop_path;
+  }
+
+  public int getBudget() {
+    return budget;
+  }
+
+  public int getRevenue() {
+    return revenue;
+  }
+
+  public int getRuntime() {
+    return runtime;
+  }
+
+  public List<Genre> getGenres() {
+    return genres;
   }
 }

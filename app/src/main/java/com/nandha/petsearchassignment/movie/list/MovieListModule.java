@@ -4,9 +4,9 @@ import com.nandha.petsearchassignment.dagger.ActivityModule;
 import dagger.Module;
 import dagger.Provides;
 
-@Module public class MovieListModule extends ActivityModule {
+@Module class MovieListModule extends ActivityModule {
 
-  public MovieListModule(MovieListActivity activity) {
+  MovieListModule(MovieListActivity activity) {
     super(activity);
   }
 

@@ -11,6 +11,7 @@ import com.nandha.petsearchassignment.Assignment;
 import com.nandha.petsearchassignment.R;
 import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.model.Movie;
+import com.nandha.petsearchassignment.movie.details.MovieDetailsActivity;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -31,8 +32,11 @@ public class MovieListActivity extends MvpActivity<MovieListView, MovieListPrese
     getActivityComponent().injectActivity(this);
 
     movieListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    movieListAdapter.setListener(movie ->
+        startActivity(MovieDetailsActivity.getActivityIntent(this, movie.getId()))
+    );
     movieListRecyclerView.setAdapter(movieListAdapter);
-    getPresenter().getData(assignmentApi);
+    getPresenter().getMovieList(assignmentApi);
   }
 
   @NonNull @Override public MovieListPresenter createPresenter() {
