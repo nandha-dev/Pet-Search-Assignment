@@ -1,19 +1,17 @@
 package com.nandha.petsearchassignment.movie.details;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
-import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.model.Movie;
 import rx.Observable;
 import rx.Observer;
 import rx.subscriptions.CompositeSubscription;
 
-class MovieDetailsPresenter extends MvpBasePresenter<MovieDetailsView> {
+class MovieDetailsPresenter {
 
   private MovieDetailsView view;
 
-  @Override public void attachView(@NonNull MovieDetailsView view) {
+  MovieDetailsPresenter(MovieDetailsView view) {
     this.view = view;
   }
 

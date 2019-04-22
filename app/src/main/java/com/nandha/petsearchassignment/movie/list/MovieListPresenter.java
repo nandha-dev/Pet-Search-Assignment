@@ -1,17 +1,19 @@
 package com.nandha.petsearchassignment.movie.list;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
-import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.model.MovieListResponse;
 import rx.Observable;
 import rx.Observer;
 import rx.subscriptions.CompositeSubscription;
 
-class MovieListPresenter extends MvpBasePresenter<MovieListView> {
+class MovieListPresenter {
 
   private MovieListView view;
+
+  MovieListPresenter(MovieListView view) {
+    this.view = view;
+  }
 
   void getMovieList(AssignmentApi assignmentApi) {
     final Observable<MovieListResponse> movieListResponseObservable =
@@ -32,9 +34,5 @@ class MovieListPresenter extends MvpBasePresenter<MovieListView> {
             view.showMovieList(movieListResponse.getMovies());
           }
         }));
-  }
-
-  @Override public void attachView(@NonNull MovieListView view) {
-    this.view = view;
   }
 }

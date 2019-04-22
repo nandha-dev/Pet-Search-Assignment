@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
-import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import com.nandha.petsearchassignment.AppConstants;
 import com.nandha.petsearchassignment.Assignment;
 import com.nandha.petsearchassignment.R;
@@ -21,7 +20,7 @@ import com.nandha.petsearchassignment.model.Genre;
 import com.nandha.petsearchassignment.model.Movie;
 import javax.inject.Inject;
 
-public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDetailsPresenter>
+public class MovieDetailsActivity extends AppCompatActivity
     implements MovieDetailsView {
 
   @BindView(R.id.toolbar) Toolbar toolbar;
@@ -40,6 +39,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
   private int movieId;
   private String movieTitle;
   private MovieDetailsComponent movieDetailsComponent;
+  private MovieDetailsPresenter movieDetailsPresenter;
 
   public static Intent getActivityIntent(Context context, int movieId, String title) {
     Intent intent = new Intent(context, MovieDetailsActivity.class);
@@ -57,11 +57,16 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
     getIntentData();
     setHomeAsUp();
     getActivityComponent().injectActivity(this);
+    initializePresenter();
 
     if (movieId == 0) {
       finish();
     }
-    getPresenter().getMovieDetails(assignmentApi, movieId);
+    movieDetailsPresenter.getMovieDetails(assignmentApi, movieId);
+  }
+
+  private void initializePresenter() {
+    movieDetailsPresenter = new MovieDetailsPresenter(this);
   }
 
   private void setHomeAsUp() {
@@ -77,10 +82,6 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
   private void getIntentData() {
     movieId = getIntent().getIntExtra(AppConstants.BUNDLE_KEY_MOVIE_ID, 0);
     movieTitle = getIntent().getStringExtra(AppConstants.BUNDLE_KEY_MOVIE_NAME);
-  }
-
-  @NonNull @Override public MovieDetailsPresenter createPresenter() {
-    return new MovieDetailsPresenter();
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
