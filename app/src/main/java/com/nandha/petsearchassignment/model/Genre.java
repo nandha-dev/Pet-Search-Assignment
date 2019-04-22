@@ -3,8 +3,7 @@ package com.nandha.petsearchassignment.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Genre {
-  @SerializedName("id") int id;
-  @SerializedName("name") String name;
+  @SerializedName("name") private String name;
 
   public String getName() {
     return name;

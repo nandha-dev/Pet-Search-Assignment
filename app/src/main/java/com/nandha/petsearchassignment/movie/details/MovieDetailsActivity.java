@@ -67,8 +67,10 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
   private void setHomeAsUp() {
     if (toolbar != null) {
       setSupportActionBar(toolbar);
-      getSupportActionBar().setTitle(movieTitle);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      if (getSupportActionBar() != null) {
+        getSupportActionBar().setTitle(movieTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      }
     }
   }
 
@@ -105,7 +107,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
         .into(backDropImageView);
 
     overViewTextView.setText(movie.getOverview());
-    durationTextView.setText(movie.getRuntime() + " Minutes");
+    durationTextView.setText(getString(R.string.duration, movie.getRuntime()));
     releaseDateTextView.setText(
         StringHelper.dateToReleaseDate(movie.getRelease_date()));
     ratingTextView.setText(String.valueOf(movie.getRating()));
@@ -113,7 +115,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsView, MovieDet
 
     StringBuilder genres = new StringBuilder();
     for (Genre genre : movie.getGenres()) {
-      genres.append(", ").append(genre.getName());
+      genres.append(genre.getName()).append(", ");
     }
     genreTextView.setText(genres);
     budgetTextView.setText(StringHelper.intToMillion(movie.getBudget()));

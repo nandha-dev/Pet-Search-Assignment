@@ -37,5 +37,4 @@ class MovieListPresenter extends MvpBasePresenter<MovieListView> {
   @Override public void attachView(@NonNull MovieListView view) {
     this.view = view;
   }
-
 }

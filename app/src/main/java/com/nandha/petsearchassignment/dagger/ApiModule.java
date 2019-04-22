@@ -11,11 +11,11 @@ import okhttp3.OkHttpClient;
 
 @Module public class ApiModule {
 
-  @Provides @Singleton public OkHttpClient getOkHttpClient() {
+  @Provides @Singleton OkHttpClient getOkHttpClient() {
     return OkHttpHelper.getOkHttpClientInstance();
   }
 
-  @Provides @Singleton public String getBaseUrl() {
+  @Provides @Singleton String getBaseUrl() {
     return AppConstants.BASE_URL;
   }
 

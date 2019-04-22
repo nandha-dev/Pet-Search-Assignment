@@ -2,7 +2,6 @@ package com.nandha.petsearchassignment.helpers;
 
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 
 public class OkHttpHelper {
   private OkHttpHelper() {

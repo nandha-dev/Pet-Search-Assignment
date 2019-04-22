@@ -11,7 +11,7 @@ public class StringHelper {
   }
 
   public static String intToMillion(int number) {
-    float million = number / 1000000;
-    return String.format(Locale.getDefault(), "$ %.1f Million", million);
+    float million = number / 1000000f;
+    return String.format(Locale.getDefault(), "$%.1f Million", million);
   }
 }

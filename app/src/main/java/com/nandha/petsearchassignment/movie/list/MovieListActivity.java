@@ -43,7 +43,9 @@ public class MovieListActivity extends MvpActivity<MovieListView, MovieListPrese
   private void setUpToolBar() {
     if (toolbar != null) {
       setSupportActionBar(toolbar);
-      getSupportActionBar().setTitle(R.string.title);
+      if (getSupportActionBar() != null) {
+        getSupportActionBar().setTitle(R.string.title);
+      }
     }
   }
 
@@ -64,7 +66,7 @@ public class MovieListActivity extends MvpActivity<MovieListView, MovieListPrese
     return new MovieListPresenter();
   }
 
-  public MovieListComponent getActivityComponent() {
+  private MovieListComponent getActivityComponent() {
     if (movieListComponent == null) {
       movieListComponent = DaggerMovieListComponent.builder()
           .applicationComponent(((Assignment) getApplication()).getApplicationComponent())
