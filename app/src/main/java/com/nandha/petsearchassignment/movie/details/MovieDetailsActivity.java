@@ -35,11 +35,11 @@ public class MovieDetailsActivity extends AppCompatActivity
   @BindView(R.id.revenue_textView) TextView revenueTextView;
 
   @Inject AssignmentApi assignmentApi;
+  @Inject MovieDetailsPresenter movieDetailsPresenter;
 
   private int movieId;
   private String movieTitle;
   private MovieDetailsComponent movieDetailsComponent;
-  private MovieDetailsPresenter movieDetailsPresenter;
 
   public static Intent getActivityIntent(Context context, int movieId, String title) {
     Intent intent = new Intent(context, MovieDetailsActivity.class);
@@ -57,16 +57,11 @@ public class MovieDetailsActivity extends AppCompatActivity
     getIntentData();
     setHomeAsUp();
     getActivityComponent().injectActivity(this);
-    initializePresenter();
 
     if (movieId == 0) {
       finish();
     }
-    movieDetailsPresenter.getMovieDetails(assignmentApi, movieId);
-  }
-
-  private void initializePresenter() {
-    movieDetailsPresenter = new MovieDetailsPresenter(this);
+    movieDetailsPresenter.getMovieDetails(movieId);
   }
 
   private void setHomeAsUp() {
@@ -96,6 +91,7 @@ public class MovieDetailsActivity extends AppCompatActivity
     if (movieDetailsComponent == null) {
       movieDetailsComponent = DaggerMovieDetailsComponent.builder()
           .applicationComponent(((Assignment) getApplication()).getApplicationComponent())
+          .movieDetailsModule(new MovieDetailsModule(this))
           .build();
     }
     return movieDetailsComponent;
@@ -118,7 +114,10 @@ public class MovieDetailsActivity extends AppCompatActivity
     for (Genre genre : movie.getGenres()) {
       genres.append(genre.getName()).append(", ");
     }
+    genres.deleteCharAt(genres.lastIndexOf(", "));
+
     genreTextView.setText(genres);
+
     budgetTextView.setText(StringHelper.intToMillion(movie.getBudget()));
     revenueTextView.setText(StringHelper.intToMillion(movie.getRevenue()));
   }

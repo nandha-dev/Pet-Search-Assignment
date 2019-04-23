@@ -94,7 +94,7 @@
 
     <TextView
         tools:text="@string/place_holder_genres"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/genre_textView"
         android:layout_marginLeft="@dimen/spacing_medium"
@@ -102,8 +102,12 @@
         android:padding="@dimen/spacing_micro"
         android:textSize="@dimen/text_size_xmedium"
         android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/duration_textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/duration_textView"
+        app:layout_constraintEnd_toStartOf="@+id/language_textView"
+        app:layout_constraintHorizontal_bias="0.0"/>
 
     <TextView
         tools:text="@string/place_holder_language"
@@ -117,11 +121,11 @@
         android:textAllCaps="true"
         android:textSize="@dimen/text_size_xmedium"
         android:padding="@dimen/spacing_micro"
-        android:layout_marginTop="@dimen/spacing_medium"
-        app:layout_constraintTop_toBottomOf="@+id/rating_textView"
         android:layout_marginEnd="@dimen/spacing_medium"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="@dimen/spacing_medium"/>
+        android:layout_marginRight="@dimen/spacing_medium"
+        app:layout_constraintTop_toTopOf="@+id/genre_textView"
+        app:layout_constraintBottom_toBottomOf="@+id/genre_textView"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"

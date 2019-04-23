@@ -6,17 +6,17 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module public class ActivityModule {
-  private final Activity mActivity;
+  private final Activity activity;
 
   public ActivityModule(Activity activity) {
-    mActivity = activity;
+    this.activity = activity;
   }
 
   @Provides @PerActivity Activity activity() {
-    return mActivity;
+    return activity;
   }
 
   @Provides @PerActivity Context provideActivityContext() {
-    return mActivity;
+    return activity;
   }
 }

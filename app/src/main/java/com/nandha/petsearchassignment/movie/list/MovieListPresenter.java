@@ -9,15 +9,17 @@ import rx.subscriptions.CompositeSubscription;
 
 class MovieListPresenter {
 
+  private AssignmentApi assignmentApi;
   private MovieListView view;
 
-  MovieListPresenter(MovieListView view) {
+  MovieListPresenter(MovieListView view, AssignmentApi assignmentApi) {
     this.view = view;
+    this.assignmentApi = assignmentApi;
   }
 
-  void getMovieList(AssignmentApi assignmentApi) {
+  void getMovieList() {
     final Observable<MovieListResponse> movieListResponseObservable =
-        assignmentApi.getPopularMovies();
+        this.assignmentApi.getPopularMovies();
     CompositeSubscription compositeSubscription = new CompositeSubscription();
     compositeSubscription.add(movieListResponseObservable.subscribe(
         new Observer<MovieListResponse>() {

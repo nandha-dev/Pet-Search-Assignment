@@ -10,12 +10,14 @@ import rx.subscriptions.CompositeSubscription;
 class MovieDetailsPresenter {
 
   private MovieDetailsView view;
+  private AssignmentApi assignmentApi;
 
-  MovieDetailsPresenter(MovieDetailsView view) {
+  MovieDetailsPresenter(MovieDetailsView view, AssignmentApi assignmentApi) {
     this.view = view;
+    this.assignmentApi = assignmentApi;
   }
 
-  void getMovieDetails(AssignmentApi assignmentApi, int movieId) {
+  void getMovieDetails(int movieId) {
     final Observable<Movie> movieListResponseObservable =
         assignmentApi.getMovieDetails(movieId);
     CompositeSubscription compositeSubscription = new CompositeSubscription();

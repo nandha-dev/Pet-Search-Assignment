@@ -10,7 +10,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.nandha.petsearchassignment.Assignment;
 import com.nandha.petsearchassignment.R;
-import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.model.Movie;
 import com.nandha.petsearchassignment.movie.details.MovieDetailsActivity;
 import java.util.List;
@@ -21,11 +20,11 @@ public class MovieListActivity extends AppCompatActivity
 
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.movieList_recyclerView) RecyclerView movieListRecyclerView;
+
   @Inject MovieListAdapter movieListAdapter;
-  @Inject AssignmentApi assignmentApi;
+  @Inject MovieListPresenter movieListPresenter;
 
   private MovieListComponent movieListComponent;
-  private MovieListPresenter movieListPresenter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +34,9 @@ public class MovieListActivity extends AppCompatActivity
     getActivityComponent().injectActivity(this);
 
     setUpToolBar();
-    initializePresenter();
     initializeRecyclerView();
 
-    movieListPresenter.getMovieList(assignmentApi);
-  }
-
-  private void initializePresenter() {
-    movieListPresenter = new MovieListPresenter(this);
+    movieListPresenter.getMovieList();
   }
 
   private void setUpToolBar() {
