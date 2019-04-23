@@ -4,7 +4,6 @@ import android.util.Log;
 import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.model.MovieListResponse;
 import rx.Observable;
-import rx.Observer;
 import rx.subscriptions.CompositeSubscription;
 
 class MovieListPresenter {
@@ -22,19 +21,14 @@ class MovieListPresenter {
         this.assignmentApi.getPopularMovies();
     CompositeSubscription compositeSubscription = new CompositeSubscription();
     compositeSubscription.add(movieListResponseObservable.subscribe(
-        new Observer<MovieListResponse>() {
-          @Override public void onCompleted() {
-            Log.d("TAG", "onCompleted");
-          }
+        this::onNext, this::onError));
+  }
 
-          @Override public void onError(Throwable e) {
-            Log.e("TAG", "onError" + e.toString(), e);
-          }
+  private void onNext(MovieListResponse movieListResponse) {
+    view.showMovieList(movieListResponse.getMovies());
+  }
 
-          @Override public void onNext(MovieListResponse movieListResponse) {
-            Log.i("TAG", "onNext");
-            view.showMovieList(movieListResponse.getMovies());
-          }
-        }));
+  private void onError(Throwable throwable) {
+    Log.e("TAG", "onError" + throwable.getMessage(), throwable);
   }
 }

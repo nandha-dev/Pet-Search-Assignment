@@ -16,7 +16,7 @@ public class Movie {
   @SerializedName("budget") private int budget;
   @SerializedName("revenue") private int revenue;
   @SerializedName("runtime") private int runtime;
-  @SerializedName("genres") private List<Genre> genres;
+  @SerializedName("genres") private List<Genre> genreList;
 
   public int getId() {
     return id;
@@ -62,7 +62,7 @@ public class Movie {
     return runtime;
   }
 
-  public List<Genre> getGenres() {
-    return genres;
+  public List<Genre> getGenreList() {
+    return genreList;
   }
 }

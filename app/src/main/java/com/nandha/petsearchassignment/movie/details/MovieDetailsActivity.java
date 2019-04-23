@@ -16,7 +16,6 @@ import com.nandha.petsearchassignment.Assignment;
 import com.nandha.petsearchassignment.R;
 import com.nandha.petsearchassignment.api.AssignmentApi;
 import com.nandha.petsearchassignment.helpers.StringHelper;
-import com.nandha.petsearchassignment.model.Genre;
 import com.nandha.petsearchassignment.model.Movie;
 import javax.inject.Inject;
 
@@ -109,15 +108,7 @@ public class MovieDetailsActivity extends AppCompatActivity
         StringHelper.dateToReleaseDate(movie.getRelease_date()));
     ratingTextView.setText(String.valueOf(movie.getRating()));
     languageTextView.setText(movie.getLanguage());
-
-    StringBuilder genres = new StringBuilder();
-    for (Genre genre : movie.getGenres()) {
-      genres.append(genre.getName()).append(", ");
-    }
-    genres.deleteCharAt(genres.lastIndexOf(", "));
-
-    genreTextView.setText(genres);
-
+    genreTextView.setText(StringHelper.genreListToString(movie.getGenreList()));
     budgetTextView.setText(StringHelper.intToMillion(movie.getBudget()));
     revenueTextView.setText(StringHelper.intToMillion(movie.getRevenue()));
   }
