@@ -1,4 +1,4 @@
-package com.nandha.petsearchassignment.dagger;
+package com.nandha.petsearchassignment.dagger.module;
 
 import com.google.gson.Gson;
 import com.nandha.petsearchassignment.AppConstants;
@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
     return AppConstants.BASE_URL;
   }
 
-  @Provides @Singleton public AssignmentApi getAssignmentApi(Gson gson) {
+  @Provides @Singleton AssignmentApi getAssignmentApi(Gson gson) {
     return new AssignmentApi(getBaseUrl(), getOkHttpClient(), gson);
   }
 }

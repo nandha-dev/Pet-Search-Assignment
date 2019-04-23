@@ -1,7 +1,10 @@
-package com.nandha.petsearchassignment.dagger;
+package com.nandha.petsearchassignment.dagger.component;
 
 import android.app.Application;
 import com.nandha.petsearchassignment.api.AssignmentApi;
+import com.nandha.petsearchassignment.dagger.module.ApiModule;
+import com.nandha.petsearchassignment.dagger.module.ApplicationModule;
+import com.nandha.petsearchassignment.dagger.module.GsonModule;
 import dagger.Component;
 import javax.inject.Singleton;
 

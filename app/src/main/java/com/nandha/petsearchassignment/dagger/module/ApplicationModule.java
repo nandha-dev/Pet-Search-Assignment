@@ -1,4 +1,4 @@
-package com.nandha.petsearchassignment.dagger;
+package com.nandha.petsearchassignment.dagger.module;
 
 import android.app.Application;
 import com.nandha.petsearchassignment.Assignment;

@@ -1,7 +1,8 @@
-package com.nandha.petsearchassignment.dagger;
+package com.nandha.petsearchassignment.dagger.module;
 
 import android.app.Activity;
 import android.content.Context;
+import com.nandha.petsearchassignment.dagger.PerActivity;
 import dagger.Module;
 import dagger.Provides;
 

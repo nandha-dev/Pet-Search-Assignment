@@ -1,7 +1,7 @@
 package com.nandha.petsearchassignment.movie.details;
 
-import com.nandha.petsearchassignment.dagger.ApplicationComponent;
 import com.nandha.petsearchassignment.dagger.PerActivity;
+import com.nandha.petsearchassignment.dagger.component.ApplicationComponent;
 import dagger.Component;
 
 @PerActivity

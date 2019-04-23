@@ -1,9 +1,9 @@
 package com.nandha.petsearchassignment;
 
 import android.app.Application;
-import com.nandha.petsearchassignment.dagger.ApplicationComponent;
-import com.nandha.petsearchassignment.dagger.ApplicationModule;
-import com.nandha.petsearchassignment.dagger.DaggerApplicationComponent;
+import com.nandha.petsearchassignment.dagger.component.ApplicationComponent;
+import com.nandha.petsearchassignment.dagger.component.DaggerApplicationComponent;
+import com.nandha.petsearchassignment.dagger.module.ApplicationModule;
 
 public class Assignment extends Application {
 

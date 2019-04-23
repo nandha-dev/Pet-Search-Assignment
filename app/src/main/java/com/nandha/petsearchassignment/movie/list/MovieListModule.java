@@ -1,7 +1,7 @@
 package com.nandha.petsearchassignment.movie.list;
 
 import com.nandha.petsearchassignment.api.AssignmentApi;
-import com.nandha.petsearchassignment.dagger.ActivityModule;
+import com.nandha.petsearchassignment.dagger.module.ActivityModule;
 import dagger.Module;
 import dagger.Provides;
 
